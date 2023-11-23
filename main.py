@@ -1,34 +1,46 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 
+
+
+# ~~~~~~~~~ GUI ~~~~~~~~~ #
+
 window = tk.Tk()
 window.title("Password Manager")
 window.config(padx=20, pady=20)
+window.columnconfigure(0, weight=1)
 
 # canvas
-canvas = tk.Canvas(height=300, width=200)
-canvas.grid(row=0, column=1)
+canvas = tk.Canvas(height=250, width=200)
+canvas.grid(row=0, column=0)
 
-# image
+# logo
 original_image = Image.open("lock-logo.png")
-resized_image = original_image.resize((150,150), Image.Resampling.LANCZOS)
+resized_image = original_image.resize((200,200), Image.Resampling.LANCZOS)
 logo_img = ImageTk.PhotoImage(resized_image)
-canvas.create_image(150,150,image=logo_img)
+canvas.create_image(100,150,image=logo_img)
 
 # labels
-website_label = tk.Label(text="Website")
-website_label.grid(row=1, column=0)
-email_label = tk.Label(text="Email / Username")
-email_label.grid(row=2, column=0)
-password_label = tk.Label(text="Password")
-password_label.grid(row=3, column=0)
+account_label = tk.Label(text="Account:")
+account_label.grid(row=1, column=0, sticky="w")
+email_label = tk.Label(text="Email / Username:")
+email_label.grid(row=3, column=0, sticky="w")
+password_label = tk.Label(text="Password:")
+password_label.grid(row=5, column=0, sticky="w")
 
 # entries
-website_entry = tk.Entry(width=35)
-website_entry.grid(row=1, column=1)
+account_entry = tk.Entry(width=35)
+account_entry.grid(row=2, column=0, sticky="w")
 email_entry = tk.Entry(width=35)
-email_entry.grid(row=2, column=1)
+email_entry.grid(row=4, column=0, sticky="w")
 password_entry = tk.Entry(width=21)
-password_entry.grid(row=3, column=1)
+password_entry.grid(row=6, column=0, sticky="w")
+
+# buttons
+generate_password_button = tk.Button(text="Generate Password")
+generate_password_button.grid(row=6, column=0, sticky="e")
+add_password_button = tk.Button(text="Add", width=33)
+add_password_button.grid(row=7, column=0)
+
 
 window.mainloop()
