@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 
 window = tk.Tk()
 window.title("Password Manager")
-window.config(padx=20, pady=20)
+window.config(padx=30, pady=20)
 window.columnconfigure(0, weight=1)
 
 # canvas
@@ -31,8 +31,10 @@ password_label.grid(row=5, column=0, sticky="w")
 # entries
 account_entry = tk.Entry(width=35)
 account_entry.grid(row=2, column=0, sticky="w")
+account_entry.focus() #allows cursor to blink upon opening
 email_entry = tk.Entry(width=35)
 email_entry.grid(row=4, column=0, sticky="w")
+email_entry.insert(0,"sample@gmail.com")
 password_entry = tk.Entry(width=21)
 password_entry.grid(row=6, column=0, sticky="w")
 
