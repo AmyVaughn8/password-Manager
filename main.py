@@ -1,6 +1,14 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 
+def save():
+
+    account = account_entry.get()
+    email = email_entry.get()
+    password = password_entry.get()
+
+    with open("data.txt", "a") as data_file:
+        data_file.write(f"{account}: {email}  |  {password}")
 
 
 # ~~~~~~~~~ GUI ~~~~~~~~~ #
@@ -41,7 +49,7 @@ password_entry.grid(row=6, column=0, sticky="w")
 # buttons
 generate_password_button = tk.Button(text="Generate Password")
 generate_password_button.grid(row=6, column=0, sticky="e")
-add_password_button = tk.Button(text="Add", width=33)
+add_password_button = tk.Button(text="Add", width=33, command=save)
 add_password_button.grid(row=7, column=0)
 
 
